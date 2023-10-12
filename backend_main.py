@@ -1,8 +1,22 @@
 import plotly.express as px
 import requests
 import streamlit as st
+from secret import api_key
 
-APIkey = "your_api_key"
+# import os
+#
+# # Access the API key from the environment variable
+# api_key = os.environ.get("API_KEY")
+#
+# if api_key:
+#     # Your code here that uses the API key
+#     print("API Key:", api_key)
+# else:
+#     print("API Key not found. Please set the API_KEY environment variable.")
+
+
+key = api_key()
+print(key)
 
 
 def get_data(place, days=None):
@@ -41,7 +55,12 @@ def result(place, days, option):
         dates = [dict["dt_txt"] for dict in data_needed]
         print(dates)
         st.image(picture_list, width=80, caption=dates)
-        figure = px.line(x=dates, y=sky, labels={"x": "Days", "y": "Sky"})
+        figure = px.line(
+            x=dates,
+            y=sky,
+            line_shape="linear",
+            labels={"x": "Days", "y": "Sky"},
+        )
         st.plotly_chart(figure)
 
 

@@ -25,6 +25,11 @@ git clone https://github.com/yourusername/weather-forecast-app.git
 pip install -r requirements.txt
 
 ### Replace the APIkey variable in the code with your OpenWeatherMap API key.
+you can set an Environment Variable:
+
+cmd setx API_KEY "your_api_key_here" 
+
+and uncomment from line six to fifteen and make the necessary corrections
 
 ### Run the application:
 
