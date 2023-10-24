@@ -33,7 +33,7 @@ and uncomment from line six to fifteen and make the necessary corrections
 
 ### Run the application:
 
-streamlit run weather_forecast_app.py
+streamlit run main.py
 
 Enter a location, select the data type, and set the forecast days to view the weather forecast.
 
