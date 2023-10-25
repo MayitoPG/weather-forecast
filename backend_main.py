@@ -16,11 +16,10 @@ from secret import api_key
 
 
 key = api_key()
-print(key)
 
 
 def get_data(place, days=None):
-    url = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={APIkey}"
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={key}"
     response = requests.get(url)
     data = response.json()
     data_needed = data["list"]
