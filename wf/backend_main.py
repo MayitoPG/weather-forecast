@@ -1,25 +1,24 @@
+import logging
+
 import plotly.express as px
 import requests
 import streamlit as st
-from secret import api_key
 
-# import os
-#
-# # Access the API key from the environment variable
-# api_key = os.environ.get("API_KEY")
-#
-# if api_key:
-#     # Your code here that uses the API key
-#     print("API Key:", api_key)
-# else:
-#     print("API Key not found. Please set the API_KEY environment variable.")
+from wf.config import API_KEY
 
+logger = logging.getLogger(__name__)
 
-key = api_key()
+# FIXME: move all streamlit code to main.py and return values from backend_main.py
+#  test these function mocking the requests.get() call
+#  handle errors on the api call and return a proper status code
+#  remove all prints and use logger.info() instead
 
 
 def get_data(place, days=None):
-    url = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={key}"
+    """
+    Get data from the API
+    """
+    url = f"https://api.openweathermap.org/data/2.5/forecast?q={place}&appid={API_KEY}"
     response = requests.get(url)
     data = response.json()
     data_needed = data["list"]
@@ -38,6 +37,13 @@ def list_2_images(sky):
 
 
 def result(place, days, option):
+    """
+    Display the result
+    :param place:
+    :param days:
+    :param option:
+    :return:
+    """
     data_needed = get_data(place, days)
     if option == "Temperature":
         temperatures = [dict["main"]["temp"] / 10 for dict in data_needed]
