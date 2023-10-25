@@ -37,7 +37,6 @@ streamlit run main.py
 
 Enter a location, select the data type, and set the forecast days to view the weather forecast.
 
-
 ### Technologies Used
 - Streamlit: For creating the user interface.
 
